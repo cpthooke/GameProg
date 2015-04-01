@@ -4,9 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/computing/documents/visual studio 2013/Projects/Game3/Game3/Content/body.png</File>
-    <File>C:/Users/computing/documents/visual studio 2013/Projects/Game3/Game3/Content/head.png</File>
-    <File>C:/Users/computing/documents/visual studio 2013/Projects/Game3/Game3/Content/neck.png</File>
-    <File>C:/Users/computing/documents/visual studio 2013/Projects/Game3/Game3/Content/pellet.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/body.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/head.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/neck.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/pellet.png</File>
   </SourceFiles>
 </SourceFileCollection>

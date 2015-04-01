@@ -124,5 +124,25 @@ namespace GamesProgramming
             nextDirection = Direction.right;
         }
 
+        public void Update(GameTime gametime)
+        {
+            HandleInput();
+            moveTimer += (float)gametime.ElapsedGameTime.TotalSeconds;
+            if (moveTimer < moveSpeed)
+            {
+                return;
+            }
+            moveTimer = 0f;
+            currentDirection = nextDirection;
+            MoveSnake();
+        }
+
+        private void HandleInput()
+        { }
+
+        private void MoveSnake()
+        { }
+
+
     }
 }
