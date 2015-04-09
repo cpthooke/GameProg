@@ -27,3 +27,32 @@ C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.XInput
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\obj\x86\Debug\SnakeInvadersV98965986.csprojResolveAssemblyReference.cache
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\obj\x86\Debug\Game3.exe
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\obj\x86\Debug\Game3.pdb
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\body.xnb
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\head.xnb
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\neck.xnb
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\pellet.xnb
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Game3.exe
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Game3.pdb
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\MonoGame.Framework.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.MediaFoundation.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.XAudio2.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct3D11.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.DXGI.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct2D1.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.XInput.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.RawInput.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct3D9.dll
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\MonoGame.Framework.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.MediaFoundation.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.XAudio2.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct3D11.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.DXGI.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct2D1.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.XInput.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.RawInput.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct3D9.xml
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\obj\x86\Debug\SnakeInvadersV98965986.csprojResolveAssemblyReference.cache

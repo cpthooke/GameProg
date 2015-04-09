@@ -138,10 +138,51 @@ namespace GamesProgramming
         }
 
         private void HandleInput()
-        { }
+        {
+            //GamePadState gps = GamePad.GetState(PlayerIndex.One);
+            if (Keyboard.GetState().IsKeyDown(Keys.Down) && currentDirection != Direction.up)
+                nextDirection = Direction.down;
+            if (Keyboard.GetState().IsKeyDown(Keys.Up) && currentDirection != Direction.down)
+                nextDirection = Direction.up;
+            if (Keyboard.GetState().IsKeyDown(Keys.Left) && currentDirection != Direction.right)
+                nextDirection = Direction.left;
+            if (Keyboard.GetState().IsKeyDown(Keys.Right) && currentDirection != Direction.left)
+                nextDirection = Direction.right;
+        }
 
         private void MoveSnake()
-        { }
+        {
+            Point p1 = bodyPoints[0];
+            switch (currentDirection)
+            {
+                case Direction.up:
+                    bodyPoints[0] = new Point(p1.X, p1.Y - 1);
+                    break;
+                case Direction.down:
+                    bodyPoints[0] = new Point(p1.X, p1.Y + 1);
+                    break;
+                case Direction.left:
+                    bodyPoints[0] = new Point(p1.X - 1, p1.Y);
+                    break;
+                case Direction.right:
+                    bodyPoints[0] = new Point(p1.X + 1, p1.Y);
+                    break;
+            }
+
+            if (extending)
+            {
+                bodyPoints.Insert(1, p1);
+                extending = false;
+                return;
+            }
+
+            for (int i = 1; i< bodyPoints.Count; i++)
+            {
+                Point p2 = bodyPoints[i];
+                bodyPoints[i] = p1;
+                p1 = p2;
+            }
+        }
 
 
     }
