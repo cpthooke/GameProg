@@ -18,6 +18,9 @@ namespace GamesProgramming
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Snake snake = new Snake();
+        Texture2D ship;
+        Rectangle rectShip;
+        String direction = "RIGHT";
 
         void drawInGame()
         {
@@ -48,6 +51,12 @@ namespace GamesProgramming
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             snake.Load(Content);
+            ship = Content.Load<Texture2D>("Content/spaceinvader");
+            rectShip.Width = ship.Width;
+            rectShip.Height = ship.Height;
+            rectShip.X = 0;
+            rectShip.Y = 440;
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -69,6 +78,18 @@ namespace GamesProgramming
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            int rightSide = graphics.GraphicsDevice.Viewport.Width;
+            int leftSide = 0;
+
+
+            if (direction.Equals("RIGHT"))
+                rectShip.X = rectShip.X + 1;
+            else //(direction.Equals("LEFT"))
+                rectShip.X = rectShip.X - 1;
+            if (rectShip.X + rectShip.Width > rightSide)
+                direction = "LEFT";
+            else if (rectShip.X < leftSide)
+                direction = "RIGHT";
             base.Update(gameTime);
             snake.Update(gameTime);
         }
@@ -81,7 +102,10 @@ namespace GamesProgramming
         {
             base.Draw(gameTime);
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
+            spriteBatch.Draw(ship, rectShip, Color.White);
             drawInGame();
+            spriteBatch.End();
         }
     }
 }

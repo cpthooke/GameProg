@@ -56,3 +56,4 @@ C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.XInput
 C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\user 1\Documents\GitHub\GameProg\Game3\obj\x86\Debug\SnakeInvadersV98965986.csprojResolveAssemblyReference.cache
+C:\Users\user 1\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\spaceinvader.xnb

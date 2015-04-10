@@ -41,7 +41,7 @@ namespace GamesProgramming
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin();
+            //spriteBatch.Begin();
 
             for (int i = 1; i < bodyPoints.Count - 1; i++)
             {
@@ -52,7 +52,7 @@ namespace GamesProgramming
                     bodyPoints[i + 1]);
             }
             drawHead(spriteBatch);
-            spriteBatch.End();
+            //spriteBatch.End();
         }
 
         void drawHead(SpriteBatch spriteBatch)
