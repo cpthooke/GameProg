@@ -14,10 +14,12 @@ namespace GamesProgramming
     {
         public const float moveSpeed = 0.2f;
         float moveTimer;
-        Texture2D head, body, angle, tail;
+        public Texture2D head, body, angle, tail;
         List<Point> bodyPoints = new List<Point>();
         Direction currentDirection = Direction.right;
         Direction nextDirection = Direction.right;
+        public Point headPoint;
+        public Point nextBody;
         bool extending;
 
         public Snake()
@@ -57,8 +59,8 @@ namespace GamesProgramming
 
         void drawHead(SpriteBatch spriteBatch)
         {
-            Point headPoint = bodyPoints[0];
-            Point nextBody = bodyPoints[1];
+            headPoint = bodyPoints[0];
+            nextBody = bodyPoints[1];
 
             float rotation;
             if (headPoint.Y == nextBody.Y - 1)
@@ -184,6 +186,10 @@ namespace GamesProgramming
             }
         }
 
+        public bool isHeadAtPosition(Point position)
+        {
+            return (bodyPoints[0] == position);
+        }
 
     }
 }

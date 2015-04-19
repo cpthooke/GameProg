@@ -1,6 +1,7 @@
 ﻿#region Using Statements
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,9 +19,10 @@ namespace GamesProgramming
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Snake snake = new Snake();
-        Texture2D ship;
-        Rectangle rectShip;
+        Texture2D ship, bullet;
+        Rectangle rectShip, rectBullet, snakeHead;
         String direction = "RIGHT";
+        String bulletVisible = "NO";
 
         void drawInGame()
         {
@@ -57,6 +59,16 @@ namespace GamesProgramming
             rectShip.X = 0;
             rectShip.Y = 440;
 
+            bullet = Content.Load<Texture2D>("Content/pellet");
+            rectBullet.Width = bullet.Width;
+            rectBullet.Height = bullet.Height;
+            rectBullet.X = 0;
+            rectBullet.Y = 0;
+
+            snakeHead.Width = snake.head.Width;
+            snakeHead.Height = snake.head.Height;
+            snakeHead.X = 0;
+            snakeHead.Y = 0;
             // TODO: use this.Content to load your game content here
         }
 
@@ -90,8 +102,28 @@ namespace GamesProgramming
                 direction = "LEFT";
             else if (rectShip.X < leftSide)
                 direction = "RIGHT";
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                bulletVisible = "YES";
+                rectBullet.X = rectShip.X + (rectShip.Width / 2) - (rectBullet.Width / 2);
+                rectBullet.Y = rectShip.Y - rectBullet.Height;
+            }
+            if (bulletVisible.Equals("YES"))
+                rectBullet.Y = rectBullet.Y - 4;
+            //if (bulletVisible.Equals("YES"))
+            //{
+            //    if (rectBullet.Intersects(snakeHead))
+            //    {
+            //        bulletVisible = "NO";
+            //        Debug.WriteLine("TEST");
+            //    }
+            //}
             base.Update(gameTime);
             snake.Update(gameTime);
+
+            if (snake.isHeadAtPosition(bullet.position))
+            { 
+            }
         }
 
         /// <summary>
@@ -104,6 +136,8 @@ namespace GamesProgramming
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(ship, rectShip, Color.White);
+            if (bulletVisible.Equals("YES"))
+                spriteBatch.Draw(bullet, rectBullet, Color.White);
             drawInGame();
             spriteBatch.End();
         }
