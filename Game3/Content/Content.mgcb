@@ -68,3 +68,26 @@
 /processorParam:TextureFormat=Color
 /build:spaceinvader.png
 
+#begin ca.ttf
+/importer:
+/processor:
+/build:ca.ttf
+
+#begin titleFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:titleFont.spritefont
+
+#begin mediumFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:mediumFont.spritefont
+
+#begin miniFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:miniFont.spritefont
+

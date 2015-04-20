@@ -21,8 +21,33 @@ namespace GamesProgramming
         Snake snake = new Snake();
         Texture2D ship, bullet;
         Rectangle rectShip, rectBullet, snakeHead;
-        String direction = "RIGHT";
-        String bulletVisible = "NO";
+        String direction = "RIGHT", bulletVisible = "NO";
+        gameState state = gameState.title;
+        const string gameTitle = "Snake Invaders", playInstructions = "Press Enter to Begin", quitInstructions = "Press ESC to Quit";
+        SpriteFont titleFont, mediumFont, miniFont;
+        KeyboardState keyboardState, lastKeyboardState;
+
+        public enum gameState
+        {
+            title,
+            inGame,
+            gameOver
+        }
+
+        void drawTitleScreen()
+        {
+
+        }
+
+        void drawInGame()
+        {
+        
+        }
+
+        void drawGameOver()
+        {
+
+        }
 
         void drawInGame()
         {
@@ -52,6 +77,9 @@ namespace GamesProgramming
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            titleFont = Content.Load<SpriteFont>("Fonts/titleFont");
+            mediumFont = Content.Load<SpriteFont>("Fonts/mediumFont");
+            miniFont = Content.Load<SpriteFont>("Fonts/miniFont");
             snake.Load(Content);
             ship = Content.Load<Texture2D>("Content/spaceinvader");
             rectShip.Width = ship.Width;
@@ -94,6 +122,7 @@ namespace GamesProgramming
             int rightSide = graphics.GraphicsDevice.Viewport.Width;
             int leftSide = 0;
 
+            
 
             snakeHead.X = snake.headPoint.X*16;
             snakeHead.Y = snake.headPoint.Y*16;
@@ -138,11 +167,15 @@ namespace GamesProgramming
                 {
                     bulletVisible = "NO";
                     Debug.WriteLine("TEST2");
+                    snake.Extend();
                 }
             }
+
             base.Update(gameTime);
             snake.Update(gameTime);
 
+            //if (snake.isLooped())
+                
             //if (snake.isHeadAtPosition(rectBullet.))
             //{ 
             //}
@@ -154,6 +187,12 @@ namespace GamesProgramming
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            if (state == gameState.title)
+                drawTitleScreen();
+            else if (state == gameState.inGame)
+                drawInGame();
+            else if (state == gameState.gameOver)
+                drawGameOver();
             base.Draw(gameTime);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();

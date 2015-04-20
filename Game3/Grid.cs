@@ -14,6 +14,8 @@ namespace GamesProgramming
     {
         public const int scale = 16;
         public const int halfScale = scale / 2;
+        public const int maxColumn = 240 / scale;
+        public const int maxRow = 320 / scale;
 
         public static Vector2 pointToVector2(Point p)
         {

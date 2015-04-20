@@ -191,5 +191,22 @@ namespace GamesProgramming
             return (bodyPoints[0] == position);
         }
 
+        public void Extend()
+        {
+            extending = true;
+        }
+
+        public bool isLooped()
+        {
+            for (int i = 1; i < bodyPoints.Count; i++)
+                if (isHeadAtPosition(bodyPoints[i]))
+                    return true;
+            return false;
+        }
+        public bool isHeadOffScreen()
+        {
+            Point h = bodyPoints[0];
+            return (h.X < 0 || h.Y < 0 || h.X >= Grid.maxColumn || h.Y >= Grid.maxRow);
+        }
     }
 }
