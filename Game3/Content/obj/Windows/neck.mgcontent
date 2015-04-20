@@ -2,8 +2,8 @@
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/neck.png</SourceFile>
   <SourceTime>2015-04-20T17:17:42.6255624+01:00</SourceTime>
-  <DestFile>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/neck.xnb</DestFile>
-  <DestTime>2015-04-20T18:53:21.8438269+01:00</DestTime>
+  <DestFile>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/bin/Windows/neck.xnb</DestFile>
+  <DestTime>2015-04-20T21:31:19.676928+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-03-16T03:01:46+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

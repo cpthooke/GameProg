@@ -12,33 +12,19 @@ namespace GamesProgramming
 {
     public class Snake
     {
-        public const float moveSpeed = 0.2f;
-        float moveTimer;
-        public Texture2D head, body, angle, tail;
-        List<Point> bodyPoints = new List<Point>();
-        Direction currentDirection = Direction.right;
-        Direction nextDirection = Direction.right;
-        public Point headPoint;
-        public Point nextBody;
         bool extending;
-
-        public Snake()
-        {
-            Reset();
-        }
-
+        float moveTimer;
+        public const float moveSpeed = 0.2f;
+        List<Point> bodyPoints = new List<Point>();
+        public Point headPoint, nextBody;
+        public Texture2D angle, body, head, tail;
+        Direction currentDirection = Direction.right, nextDirection = Direction.right;
         public enum Direction
         {
             up,
             down,
             left,
             right
-        }
-
-        public void Load(ContentManager content)
-        {
-            head = content.Load<Texture2D>("Content/head");
-            body = content.Load<Texture2D>("Content/body");
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -57,23 +43,6 @@ namespace GamesProgramming
             //spriteBatch.End();
         }
 
-        void drawHead(SpriteBatch spriteBatch)
-        {
-            headPoint = bodyPoints[0];
-            nextBody = bodyPoints[1];
-
-            float rotation;
-            if (headPoint.Y == nextBody.Y - 1)
-                rotation = -MathHelper.PiOver2;
-            else if (headPoint.Y == nextBody.Y + 1)
-                rotation = MathHelper.PiOver2;
-            else if (headPoint.X == nextBody.X - 1)
-                rotation = MathHelper.Pi;
-            else
-                rotation = 0f;
-
-            Grid.drawSprite(spriteBatch, head, headPoint, rotation);
-        }
         void drawBody(SpriteBatch spriteBatch, Point current, Point last, Point next) 
         {
             if (current.X != last.X)
@@ -93,6 +62,30 @@ namespace GamesProgramming
                     MathHelper.PiOver2);
             }
         }
+
+        void drawHead(SpriteBatch spriteBatch)
+        {
+            headPoint = bodyPoints[0];
+            nextBody = bodyPoints[1];
+
+            float rotation;
+            if (headPoint.Y == nextBody.Y - 1)
+                rotation = -MathHelper.PiOver2;
+            else if (headPoint.Y == nextBody.Y + 1)
+                rotation = MathHelper.PiOver2;
+            else if (headPoint.X == nextBody.X - 1)
+                rotation = MathHelper.Pi;
+            else
+                rotation = 0f;
+
+            Grid.drawSprite(spriteBatch, head, headPoint, rotation);
+        }
+
+        public void Extend()
+        {
+            extending = true;
+        }
+
         float getAngleRotation(Point current, Point last, Point next) 
         {
             Point negPiOver2A = new Point(next.X + 1, last.Y - 1);
@@ -114,31 +107,6 @@ namespace GamesProgramming
                 return 0f;
         }
 
-        public void Reset()
-        {
-            bodyPoints.Clear();
-
-            bodyPoints.Add(new Point(2, 0));
-            bodyPoints.Add(new Point(1, 0));
-            bodyPoints.Add(new Point(0, 0));
-
-            currentDirection = Direction.right;
-            nextDirection = Direction.right;
-        }
-
-        public void Update(GameTime gametime)
-        {
-            HandleInput();
-            moveTimer += (float)gametime.ElapsedGameTime.TotalSeconds;
-            if (moveTimer < moveSpeed)
-            {
-                return;
-            }
-            moveTimer = 0f;
-            currentDirection = nextDirection;
-            MoveSnake();
-        }
-
         private void HandleInput()
         {
             //GamePadState gps = GamePad.GetState(PlayerIndex.One);
@@ -150,6 +118,31 @@ namespace GamesProgramming
                 nextDirection = Direction.left;
             if (Keyboard.GetState().IsKeyDown(Keys.Right) && currentDirection != Direction.left)
                 nextDirection = Direction.right;
+        }
+
+        public bool isHeadAtPosition(Point position)
+        {
+            return (bodyPoints[0] == position);
+        }
+
+        public bool isHeadOffScreen()
+        {
+            Point h = bodyPoints[0];
+            return (h.X < 0 || h.Y < 0 || h.X >= Grid.maxColumn || h.Y >= Grid.maxRow);
+        }
+
+        public bool isLooped()
+        {
+            for (int i = 1; i < bodyPoints.Count; i++)
+                if (isHeadAtPosition(bodyPoints[i]))
+                    return true;
+            return false;
+        }
+
+        public void Load(ContentManager content)
+        {
+            head = content.Load<Texture2D>("Content/head");
+            body = content.Load<Texture2D>("Content/body");
         }
 
         private void MoveSnake()
@@ -186,27 +179,35 @@ namespace GamesProgramming
             }
         }
 
-        public bool isHeadAtPosition(Point position)
+        public void Reset()
         {
-            return (bodyPoints[0] == position);
+            bodyPoints.Clear();
+
+            bodyPoints.Add(new Point(2, 0));
+            bodyPoints.Add(new Point(1, 0));
+            bodyPoints.Add(new Point(0, 0));
+
+            currentDirection = Direction.right;
+            nextDirection = Direction.right;
         }
 
-        public void Extend()
+        public Snake()
         {
-            extending = true;
+            Reset();
         }
 
-        public bool isLooped()
+        public void Update(GameTime gametime)
         {
-            for (int i = 1; i < bodyPoints.Count; i++)
-                if (isHeadAtPosition(bodyPoints[i]))
-                    return true;
-            return false;
+            HandleInput();
+            moveTimer += (float)gametime.ElapsedGameTime.TotalSeconds;
+            if (moveTimer < moveSpeed)
+            {
+                return;
+            }
+            moveTimer = 0f;
+            currentDirection = nextDirection;
+            MoveSnake();
         }
-        public bool isHeadOffScreen()
-        {
-            Point h = bodyPoints[0];
-            return (h.X < 0 || h.Y < 0 || h.X >= Grid.maxColumn || h.Y >= Grid.maxRow);
-        }
+
     }
 }

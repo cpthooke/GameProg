@@ -16,42 +16,91 @@ namespace GamesProgramming
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        Snake snake = new Snake();
-        Texture2D ship, bullet;
-        Rectangle rectShip, rectBullet, snakeHead;
-        String direction = "RIGHT", bulletVisible = "NO";
-        gameState state = gameState.title;
-        const string gameTitle = "Snake Invaders", playInstructions = "Press Enter to Begin", quitInstructions = "Press ESC to Quit";
-        SpriteFont titleFont, mediumFont, miniFont;
+        public enum GameState
+        {
+            Title,
+            InGame,
+            GameOver,
+        }
+        const string gameOver = "GameOver!", gameOverInstructions = "Press Enter to Continue", gameTitle = "Snake Invaders", playInstructions = "Press Enter to Begin", quitInstructions = "Press ESC to Quit", scoreFormat = "Score: {0}";
+        GameState state = GameState.Title;
         KeyboardState keyboardState, lastKeyboardState;
+        SpriteFont mediumFont, miniFont, titleFont;
+        GraphicsDeviceManager graphics;
+        int score; 
+        Rectangle rectBullet, rectShip, snakeHead;
+        Snake snake = new Snake();
+        SpriteBatch spriteBatch; 
+        String bulletVisible = "NO", direction = "RIGHT";
+        Texture2D bullet, ship;
 
-        public enum gameState
+        //int screenWidth = 800, screenHeight = 600; 2
+        //
+        //ClassButton btnPlay;
+
+        void drawText(SpriteFont font, string text, Vector2 position)
         {
-            title,
-            inGame,
-            gameOver
+            Vector2 halfSize = font.MeasureString(text) / 2.0f;
+            position = position - halfSize;
+       
+            position.X = (int)position.X;
+            position.Y = (int)position.Y;
+       
+            spriteBatch.Begin();
+            spriteBatch.DrawString(
+                font,
+                text,
+                position,
+                Color.White);
+            spriteBatch.End();
         }
-
-        void drawTitleScreen()
+       
+        void drawTitleScreen() 
         {
-
+            drawText(titleFont, gameTitle, new Vector2(120f, 25f));
+            drawText(mediumFont, playInstructions, new Vector2(120f, 200f));
+            drawText(mediumFont, quitInstructions, new Vector2(120f, 225f));
         }
-
-        void drawInGame()
+       
+        void updateTitleScreen()
         {
-        
+            if (isNewButtonPressed(Keys.Enter))
+            {
+                snake.Reset();
+                score = 0;
+                state = GameState.InGame;
+            }
         }
-
+       
+        void UpdateInGame(GameTime gameTime)
+        {
+            if (isNewButtonPressed(Keys.Back))
+                state = GameState.Title;
+        }
+       
+        void updateGameOver()
+        {
+            if (isNewButtonPressed(Keys.Back))
+                state = GameState.Title;
+        }
         void drawGameOver()
         {
+            snake.Draw(spriteBatch);
 
+            drawText(titleFont, gameOver, new Vector2(120f, 25f));
+            drawText(mediumFont, string.Format(scoreFormat, score), new Vector2(120f, 200f));
+            drawText(mediumFont, gameOverInstructions, new Vector2(120f, 225f));
+        }
+       
+        bool isNewButtonPressed(Keys key)
+        {
+            return (keyboardState.IsKeyDown(key) && lastKeyboardState.IsKeyUp(key));
         }
 
         void drawInGame()
         {
             snake.Draw(spriteBatch);
+            drawText(miniFont, string.Format(scoreFormat, score), new Vector2(120f, 5f));
         }
 
         public Game1() : base()
@@ -76,11 +125,18 @@ namespace GamesProgramming
         /// </summary>
         protected override void LoadContent()
         {
+            //graphics.PreferredBackBufferWidth = screenWidth; 2
+            //graphics.PreferredBackBufferHeight = screenHeight;
+            ////graphics.IsFullScreen = true;
+            //graphics.ApplyChanges();
+            //IsMouseVisible = true;
+
+            //btnPlay = new ClassButton(Content.Load<Texture2D>("Content/Neck"), graphics.GraphicsDevice); 2
+            //btnPlay.setPosition(new Vector2(350, 300));
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            titleFont = Content.Load<SpriteFont>("Fonts/titleFont");
-            mediumFont = Content.Load<SpriteFont>("Fonts/mediumFont");
-            miniFont = Content.Load<SpriteFont>("Fonts/miniFont");
-            snake.Load(Content);
+            titleFont = Content.Load<SpriteFont>("Content/titleFont");
+            mediumFont = Content.Load<SpriteFont>("Content/mediumFont");
+            miniFont = Content.Load<SpriteFont>("Content/miniFont");
             ship = Content.Load<Texture2D>("Content/spaceinvader");
             rectShip.Width = ship.Width;
             rectShip.Height = ship.Height;
@@ -93,12 +149,14 @@ namespace GamesProgramming
             rectBullet.X = 0;
             rectBullet.Y = 0;
 
+            snake.Load(Content);
 
             snakeHead.Width = snake.head.Width;
             snakeHead.Height = snake.head.Height;
             //snakeHead.X = snake.headPoint.X;
             //snakeHead.Y =  snake.headPoint.Y;
             // TODO: use this.Content to load your game content here
+            
         }
 
         /// <summary>
@@ -117,26 +175,36 @@ namespace GamesProgramming
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            //MouseState mouse = Mouse.GetState(); 2
+            //keyboardState = Keyboard.GetState(playerIndex.One)
+            //switch(state)
+            //{
+            //    case GameState.Title:
+            //        if (btnPlay.isClicked == true)
+            //            state = GameState.InGame;
+            //        btnPlay.Update(mouse);
+            //        break;
+            //    case GameState.InGame:
+            //        break;
+            //}
+            lastKeyboardState = keyboardState;
+
+            if (state == GameState.Title)
+                updateTitleScreen();
+            else if (state == GameState.InGame)
+                UpdateInGame(gameTime);
+            else if (state == GameState.GameOver)
+                updateGameOver();
+            
+
             int rightSide = graphics.GraphicsDevice.Viewport.Width;
             int leftSide = 0;
 
-            
-
             snakeHead.X = snake.headPoint.X*16;
             snakeHead.Y = snake.headPoint.Y*16;
-
-            //snakeHead.Height = 128;
-            //snakeHead.Width = 128;
-
-            //snakeHead.X = 128 + snake.headPoint.X;//snake.head.Width;
-            //snakeHead.Y = 128 + snake.headPoint.Y;//snake.head.Height;
-
-
-            //Debug.WriteLine(snake.headPoint.X);
-            //Debug.WriteLine(snake.headPoint.Y);
-   
 
             if (direction.Equals("RIGHT"))
                 rectShip.X = rectShip.X + 1;
@@ -166,15 +234,18 @@ namespace GamesProgramming
                 if (rectBullet.Intersects(snakeHead))
                 {
                     bulletVisible = "NO";
-                    Debug.WriteLine("TEST2");
+                    //Debug.WriteLine("TEST2");
                     snake.Extend();
+                    score++;
                 }
             }
 
+            if (snake.isLooped())
+                state = GameState.GameOver;
+            if (snake.isHeadOffScreen())
+                state = GameState.GameOver;
             base.Update(gameTime);
             snake.Update(gameTime);
-
-            //if (snake.isLooped())
                 
             //if (snake.isHeadAtPosition(rectBullet.))
             //{ 
@@ -187,21 +258,36 @@ namespace GamesProgramming
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            if (state == gameState.title)
+            if (state == GameState.Title)
                 drawTitleScreen();
-            else if (state == gameState.inGame)
+            else if (state == GameState.InGame)
                 drawInGame();
-            else if (state == gameState.gameOver)
+            else if (state == GameState.GameOver)
                 drawGameOver();
-            base.Draw(gameTime);
+            
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
             spriteBatch.Begin();
+            //switch(state) 2
+            //{
+            //    case GameState.Title:
+            //        spriteBatch.Draw(Content.Load<Texture2D>("Content/Pellet"), new Rectangle(0, 0, screenWidth, screenHeight), Color.White);
+            //        btnPlay.Draw(spriteBatch);
+            //        break;
+            //    case GameState.InGame:
+            //        break;
+            //
+            //}
             spriteBatch.Draw(ship, rectShip, Color.White);
             spriteBatch.Draw(bullet, snakeHead, Color.White);
             if (bulletVisible.Equals("YES"))
                 spriteBatch.Draw(bullet, rectBullet, Color.White);
+
+
+
             drawInGame();
             spriteBatch.End();
+            base.Draw(gameTime);
         }
     }
 }

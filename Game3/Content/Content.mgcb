@@ -68,11 +68,6 @@
 /processorParam:TextureFormat=Color
 /build:spaceinvader.png
 
-#begin ca.ttf
-/importer:
-/processor:
-/build:ca.ttf
-
 #begin titleFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor

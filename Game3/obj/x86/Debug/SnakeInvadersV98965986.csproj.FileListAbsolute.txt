@@ -87,3 +87,9 @@ C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.XIn
 C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.RawInput.xml
 C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\SharpDX.Direct3D9.xml
 C:\Users\computing\Documents\GitHub\GameProg\Game3\obj\x86\Debug\SnakeInvadersV98965986.csprojResolveAssemblyReference.cache
+C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\mediumFont.spritefont
+C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\miniFont.spritefont
+C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\titleFont.spritefont
+C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\mediumFont.xnb
+C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\miniFont.xnb
+C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\titleFont.xnb
