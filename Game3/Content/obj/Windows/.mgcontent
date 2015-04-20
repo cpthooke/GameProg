@@ -4,10 +4,10 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/user 1/Documents/GitHub/GameProg/Game3/Content/body.png</File>
-    <File>C:/Users/user 1/Documents/GitHub/GameProg/Game3/Content/head.png</File>
-    <File>C:/Users/user 1/Documents/GitHub/GameProg/Game3/Content/neck.png</File>
-    <File>C:/Users/user 1/Documents/GitHub/GameProg/Game3/Content/pellet.png</File>
-    <File>C:/Users/user 1/Documents/GitHub/GameProg/Game3/Content/spaceinvader.png</File>
+    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/body.png</File>
+    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/head.png</File>
+    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/neck.png</File>
+    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/pellet.png</File>
+    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/spaceinvader.png</File>
   </SourceFiles>
 </SourceFileCollection>

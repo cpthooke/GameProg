@@ -65,10 +65,11 @@ namespace GamesProgramming
             rectBullet.X = 0;
             rectBullet.Y = 0;
 
+
             snakeHead.Width = snake.head.Width;
             snakeHead.Height = snake.head.Height;
-            snakeHead.X = 0;
-            snakeHead.Y = 0;
+            //snakeHead.X = snake.headPoint.X;
+            //snakeHead.Y =  snake.headPoint.Y;
             // TODO: use this.Content to load your game content here
         }
 
@@ -94,6 +95,20 @@ namespace GamesProgramming
             int leftSide = 0;
 
 
+            snakeHead.X = snake.headPoint.X*16;
+            snakeHead.Y = snake.headPoint.Y*16;
+
+            //snakeHead.Height = 128;
+            //snakeHead.Width = 128;
+
+            //snakeHead.X = 128 + snake.headPoint.X;//snake.head.Width;
+            //snakeHead.Y = 128 + snake.headPoint.Y;//snake.head.Height;
+
+
+            //Debug.WriteLine(snake.headPoint.X);
+            //Debug.WriteLine(snake.headPoint.Y);
+   
+
             if (direction.Equals("RIGHT"))
                 rectShip.X = rectShip.X + 1;
             else //(direction.Equals("LEFT"))
@@ -110,20 +125,27 @@ namespace GamesProgramming
             }
             if (bulletVisible.Equals("YES"))
                 rectBullet.Y = rectBullet.Y - 4;
-            //if (bulletVisible.Equals("YES"))
-            //{
-            //    if (rectBullet.Intersects(snakeHead))
-            //    {
-            //        bulletVisible = "NO";
-            //        Debug.WriteLine("TEST");
-            //    }
-            //}
+            if (bulletVisible.Equals("YES"))
+            {
+                //Debug.WriteLine("TEST1");
+                Debug.WriteLine(snakeHead.X);
+                Debug.WriteLine(snakeHead.Y);
+
+                //Debug.WriteLine(snake.headPoint.X);
+                //Debug.WriteLine(snake.headPoint.Y);
+
+                if (rectBullet.Intersects(snakeHead))
+                {
+                    bulletVisible = "NO";
+                    Debug.WriteLine("TEST2");
+                }
+            }
             base.Update(gameTime);
             snake.Update(gameTime);
 
-            if (snake.isHeadAtPosition(bullet.position))
-            { 
-            }
+            //if (snake.isHeadAtPosition(rectBullet.))
+            //{ 
+            //}
         }
 
         /// <summary>
@@ -136,6 +158,7 @@ namespace GamesProgramming
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
             spriteBatch.Draw(ship, rectShip, Color.White);
+            spriteBatch.Draw(bullet, snakeHead, Color.White);
             if (bulletVisible.Equals("YES"))
                 spriteBatch.Draw(bullet, rectBullet, Color.White);
             drawInGame();

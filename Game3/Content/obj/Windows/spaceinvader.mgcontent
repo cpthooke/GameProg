@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/user 1/Documents/GitHub/GameProg/Game3/Content/spaceinvader.png</SourceFile>
-  <SourceTime>2015-04-10T15:33:09.4429628+01:00</SourceTime>
-  <DestFile>C:/Users/user 1/Documents/GitHub/GameProg/Game3/Content/bin/Windows/spaceinvader.xnb</DestFile>
-  <DestTime>2015-04-10T15:53:39.3353086+01:00</DestTime>
+  <SourceFile>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/spaceinvader.png</SourceFile>
+  <SourceTime>2015-04-20T10:50:31.8271514+01:00</SourceTime>
+  <DestFile>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/bin/Windows/spaceinvader.xnb</DestFile>
+  <DestTime>2015-04-20T10:59:16.7671762+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2015-03-16T03:01:46+00:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
