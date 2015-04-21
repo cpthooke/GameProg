@@ -14,8 +14,8 @@ namespace GamesProgramming
     {
         public const int scale = 16;
         public const int halfScale = scale / 2;
-        public const int maxColumn = 240 / scale;
-        public const int maxRow = 320 / scale;
+        public const int maxColumn = 50;
+        public const int maxRow = 320;
 
         public static Vector2 pointToVector2(Point p)
         {
@@ -26,9 +26,13 @@ namespace GamesProgramming
 
         public static void drawSprite(SpriteBatch spriteBatch, Texture2D texture, Point point, float rotation)
         {
+            //if (Game1.GameState.Title)
+            //    maxColumn = 50;
             float spriteSize = (float)Math.Max(texture.Width, texture.Height);
             Vector2 origin = new Vector2(texture.Width / 2f, texture.Height / 2f);
+            //spriteBatch.Begin();
             spriteBatch.Draw(texture, pointToVector2(point), null, Color.White, rotation, origin, scale / spriteSize, SpriteEffects.None, 0);
+           // spriteBatch.End();
         }
     }
 }

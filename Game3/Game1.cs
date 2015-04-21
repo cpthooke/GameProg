@@ -27,10 +27,10 @@ namespace GamesProgramming
         KeyboardState keyboardState, lastKeyboardState;
         SpriteFont mediumFont, miniFont, titleFont;
         GraphicsDeviceManager graphics;
-        int score; 
+        int score;
         Rectangle rectBullet, rectShip, snakeHead;
         Snake snake = new Snake();
-        SpriteBatch spriteBatch; 
+        SpriteBatch spriteBatch;
         String bulletVisible = "NO", direction = "RIGHT";
         Texture2D bullet, ship;
 
@@ -42,42 +42,42 @@ namespace GamesProgramming
         {
             Vector2 halfSize = font.MeasureString(text) / 2.0f;
             position = position - halfSize;
-       
+
             position.X = (int)position.X;
             position.Y = (int)position.Y;
-       
-            spriteBatch.Begin();
+
+            //spriteBatch.Begin();
             spriteBatch.DrawString(
                 font,
                 text,
                 position,
                 Color.White);
-            spriteBatch.End();
+            //spriteBatch.End();
         }
-       
-        void drawTitleScreen() 
+
+        void drawTitleScreen()
         {
             drawText(titleFont, gameTitle, new Vector2(120f, 25f));
             drawText(mediumFont, playInstructions, new Vector2(120f, 200f));
             drawText(mediumFont, quitInstructions, new Vector2(120f, 225f));
         }
-       
+
         void updateTitleScreen()
         {
-            if (isNewButtonPressed(Keys.Enter))
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
                 snake.Reset();
                 score = 0;
                 state = GameState.InGame;
             }
         }
-       
+
         void UpdateInGame(GameTime gameTime)
         {
             if (isNewButtonPressed(Keys.Back))
                 state = GameState.Title;
         }
-       
+
         void updateGameOver()
         {
             if (isNewButtonPressed(Keys.Back))
@@ -91,7 +91,7 @@ namespace GamesProgramming
             drawText(mediumFont, string.Format(scoreFormat, score), new Vector2(120f, 200f));
             drawText(mediumFont, gameOverInstructions, new Vector2(120f, 225f));
         }
-       
+
         bool isNewButtonPressed(Keys key)
         {
             return (keyboardState.IsKeyDown(key) && lastKeyboardState.IsKeyUp(key));
@@ -148,15 +148,15 @@ namespace GamesProgramming
             rectBullet.Height = bullet.Height;
             rectBullet.X = 0;
             rectBullet.Y = 0;
-
-            snake.Load(Content);
+            if (state == GameState.Title)
+                snake.Load(Content);
 
             snakeHead.Width = snake.head.Width;
             snakeHead.Height = snake.head.Height;
             //snakeHead.X = snake.headPoint.X;
             //snakeHead.Y =  snake.headPoint.Y;
             // TODO: use this.Content to load your game content here
-            
+
         }
 
         /// <summary>
@@ -175,8 +175,8 @@ namespace GamesProgramming
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             //MouseState mouse = Mouse.GetState(); 2
             //keyboardState = Keyboard.GetState(playerIndex.One)
@@ -195,16 +195,19 @@ namespace GamesProgramming
             if (state == GameState.Title)
                 updateTitleScreen();
             else if (state == GameState.InGame)
+            {
                 UpdateInGame(gameTime);
+                Snake.gameActive = true;
+                snakeHead.X = snake.headPoint.X * 16;
+                snakeHead.Y = snake.headPoint.Y * 16;
+            }
             else if (state == GameState.GameOver)
                 updateGameOver();
-            
+
 
             int rightSide = graphics.GraphicsDevice.Viewport.Width;
             int leftSide = 0;
 
-            snakeHead.X = snake.headPoint.X*16;
-            snakeHead.Y = snake.headPoint.Y*16;
 
             if (direction.Equals("RIGHT"))
                 rectShip.X = rectShip.X + 1;
@@ -225,7 +228,6 @@ namespace GamesProgramming
             if (bulletVisible.Equals("YES"))
             {
                 //Debug.WriteLine("TEST1");
-                Debug.WriteLine(snakeHead.X);
                 Debug.WriteLine(snakeHead.Y);
 
                 //Debug.WriteLine(snake.headPoint.X);
@@ -246,7 +248,7 @@ namespace GamesProgramming
                 state = GameState.GameOver;
             base.Update(gameTime);
             snake.Update(gameTime);
-                
+
             //if (snake.isHeadAtPosition(rectBullet.))
             //{ 
             //}
@@ -258,16 +260,23 @@ namespace GamesProgramming
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             if (state == GameState.Title)
                 drawTitleScreen();
             else if (state == GameState.InGame)
+            {
                 drawInGame();
+                spriteBatch.Draw(ship, rectShip, Color.White);
+                //spriteBatch.Draw(bullet, snakeHead, Color.White);
+            }
+            if (bulletVisible.Equals("YES"))
+                spriteBatch.Draw(bullet, rectBullet, Color.White);
             else if (state == GameState.GameOver)
                 drawGameOver();
-            
-            GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin();
+            spriteBatch.End();
+
             //switch(state) 2
             //{
             //    case GameState.Title:
@@ -278,15 +287,11 @@ namespace GamesProgramming
             //        break;
             //
             //}
-            spriteBatch.Draw(ship, rectShip, Color.White);
-            spriteBatch.Draw(bullet, snakeHead, Color.White);
-            if (bulletVisible.Equals("YES"))
-                spriteBatch.Draw(bullet, rectBullet, Color.White);
 
+                Debug.WriteLine(snake.headPoint.X);
 
-
-            drawInGame();
-            spriteBatch.End();
+            //drawInGame();
+            
             base.Draw(gameTime);
         }
     }

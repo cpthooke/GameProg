@@ -13,6 +13,7 @@ namespace GamesProgramming
     public class Snake
     {
         bool extending;
+        public static bool gameActive = false;
         float moveTimer;
         public const float moveSpeed = 0.2f;
         List<Point> bodyPoints = new List<Point>();
@@ -145,37 +146,40 @@ namespace GamesProgramming
             body = content.Load<Texture2D>("Content/body");
         }
 
-        private void MoveSnake()
+        private void MoveSnake(bool gameActive)
         {
-            Point p1 = bodyPoints[0];
-            switch (currentDirection)
+            if (gameActive == true)
             {
-                case Direction.up:
-                    bodyPoints[0] = new Point(p1.X, p1.Y - 1);
-                    break;
-                case Direction.down:
-                    bodyPoints[0] = new Point(p1.X, p1.Y + 1);
-                    break;
-                case Direction.left:
-                    bodyPoints[0] = new Point(p1.X - 1, p1.Y);
-                    break;
-                case Direction.right:
-                    bodyPoints[0] = new Point(p1.X + 1, p1.Y);
-                    break;
-            }
+                Point p1 = bodyPoints[0];
+                switch (currentDirection)
+                {
+                    case Direction.up:
+                        bodyPoints[0] = new Point(p1.X, p1.Y - 1);
+                        break;
+                    case Direction.down:
+                        bodyPoints[0] = new Point(p1.X, p1.Y + 1);
+                        break;
+                    case Direction.left:
+                        bodyPoints[0] = new Point(p1.X - 1, p1.Y);
+                        break;
+                    case Direction.right:
+                        bodyPoints[0] = new Point(p1.X + 1, p1.Y);
+                        break;
+                }
 
-            if (extending)
-            {
-                bodyPoints.Insert(1, p1);
-                extending = false;
-                return;
-            }
+                if (extending)
+                {
+                    bodyPoints.Insert(1, p1);
+                    extending = false;
+                    return;
+                }
 
-            for (int i = 1; i< bodyPoints.Count; i++)
-            {
-                Point p2 = bodyPoints[i];
-                bodyPoints[i] = p1;
-                p1 = p2;
+                for (int i = 1; i < bodyPoints.Count; i++)
+                {
+                    Point p2 = bodyPoints[i];
+                    bodyPoints[i] = p1;
+                    p1 = p2;
+                }
             }
         }
 
@@ -206,7 +210,7 @@ namespace GamesProgramming
             }
             moveTimer = 0f;
             currentDirection = nextDirection;
-            MoveSnake();
+            MoveSnake(gameActive);
         }
 
     }
