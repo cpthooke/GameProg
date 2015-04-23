@@ -93,3 +93,10 @@ C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\tit
 C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\mediumFont.xnb
 C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\miniFont.xnb
 C:\Users\computing\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\titleFont.xnb
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\mediumFont.spritefont
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\miniFont.spritefont
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\spaceinvader.xnb
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\titleFont.spritefont
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\mediumFont.xnb
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\miniFont.xnb
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\titleFont.xnb

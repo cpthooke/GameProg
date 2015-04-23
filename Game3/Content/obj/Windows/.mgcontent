@@ -4,13 +4,13 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/body.png</File>
-    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/head.png</File>
-    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/neck.png</File>
-    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/pellet.png</File>
-    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/spaceinvader.png</File>
-    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/titleFont.spritefont</File>
-    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/mediumFont.spritefont</File>
-    <File>C:/Users/computing/Documents/GitHub/GameProg/Game3/Content/miniFont.spritefont</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/body.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/head.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/neck.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/pellet.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/spaceinvader.png</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/titleFont.spritefont</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/mediumFont.spritefont</File>
+    <File>C:/Users/Steven/Documents/GitHub/GameProg/Game3/Content/miniFont.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

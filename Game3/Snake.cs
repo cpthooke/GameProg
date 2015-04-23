@@ -16,7 +16,7 @@ namespace GamesProgramming
         public static bool gameActive = false;
         float moveTimer;
         public const float moveSpeed = 0.2f;
-        List<Point> bodyPoints = new List<Point>();
+        public List<Point> bodyPoints = new List<Point>();
         public Point headPoint, nextBody;
         public Texture2D angle, body, head, tail;
         Direction currentDirection = Direction.right, nextDirection = Direction.right;
