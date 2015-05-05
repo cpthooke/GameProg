@@ -101,3 +101,7 @@ C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\medium
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\miniFont.xnb
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\SI.xnb
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\titleFont.xnb
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Game3.exe.manifest
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Game3.application
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\obj\x86\Debug\Game3.exe.manifest
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\obj\x86\Debug\Game3.application
