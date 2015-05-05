@@ -99,4 +99,5 @@ C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\spacei
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\titleFont.spritefont
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\mediumFont.xnb
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\miniFont.xnb
+C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\SI.xnb
 C:\Users\Steven\Documents\GitHub\GameProg\Game3\bin\Windows\Debug\Content\titleFont.xnb

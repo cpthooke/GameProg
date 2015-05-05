@@ -82,6 +82,7 @@
     <Content Include="Content\titleFont.spritefont">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Content\SI.xnb" />
     <None Include="SnakeInvadersContent.contentproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

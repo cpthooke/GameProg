@@ -29,7 +29,7 @@ namespace GamesProgramming
         Snake snake = new Snake();
         SpriteBatch spriteBatch;
         String bulletVisible = "NO", direction = "RIGHT";
-        Texture2D bullet, ship;
+        Texture2D bullet, logo, ship;
 
         void drawText(SpriteFont font, string text, Vector2 position)
         {
@@ -43,14 +43,16 @@ namespace GamesProgramming
                 font,
                 text,
                 position,
-                Color.White);
+                Color.Yellow);
         }
 
         void drawTitleScreen()
         {
-            drawText(titleFont, gameTitle, new Vector2(120f, 25f));
-            drawText(mediumFont, playInstructions, new Vector2(120f, 200f));
-            drawText(mediumFont, quitInstructions, new Vector2(120f, 225f));
+            spriteBatch.Draw(logo, new Vector2((graphics.PreferredBackBufferWidth - logo.Width) / 2, 25f), Color.White);
+
+            //drawText(titleFont, gameTitle, new Vector2(120f, 25f));
+            drawText(mediumFont, playInstructions, new Vector2(graphics.PreferredBackBufferWidth / 2, 200f));
+            drawText(mediumFont, quitInstructions, new Vector2(graphics.PreferredBackBufferWidth / 2, 225f));
         }
 
         void updateTitleScreen()
@@ -78,9 +80,9 @@ namespace GamesProgramming
         {
             snake.Draw(spriteBatch);
 
-            drawText(titleFont, gameOver, new Vector2(120f, 25f));
-            drawText(mediumFont, string.Format(scoreFormat, score), new Vector2(120f, 200f));
-            drawText(mediumFont, gameOverInstructions, new Vector2(120f, 225f));
+            drawText(titleFont, gameOver, new Vector2(graphics.PreferredBackBufferWidth / 2, 25f));
+            drawText(mediumFont, string.Format(scoreFormat, score), new Vector2(graphics.PreferredBackBufferWidth / 2, 200f));
+            drawText(mediumFont, gameOverInstructions, new Vector2(graphics.PreferredBackBufferWidth / 2, 225f));
         }
 
         bool isNewButtonPressed(Keys key)
@@ -91,7 +93,7 @@ namespace GamesProgramming
         void drawInGame()
         {
             snake.Draw(spriteBatch);
-            drawText(miniFont, string.Format(scoreFormat, score), new Vector2(120f, 5f));
+            drawText(miniFont, string.Format(scoreFormat, score), new Vector2(120f, 10f));
         }
 
         public Game1() : base()
@@ -107,6 +109,9 @@ namespace GamesProgramming
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            logo = Content.Load<Texture2D>("Content/SI");
+
             titleFont = Content.Load<SpriteFont>("Content/titleFont");
             mediumFont = Content.Load<SpriteFont>("Content/mediumFont");
             miniFont = Content.Load<SpriteFont>("Content/miniFont");
